@@ -36,8 +36,12 @@ public class Start {
 			if (LoginSession.isLoginStatus() == true && LoginSession.getRole() ==1) {
 				System.out.println("	3. Admin control");
 			}
-
-			System.out.println("	4. Booking ticket");
+			if(LoginSession.isLoginStatus() == true) {
+				System.out.println("	4. Booking ticket");
+			}else {
+				System.out.println("	   Sign Up for Booking ticket");
+			}
+			
 			System.out.println("	5. About us");
 			if (LoginSession.isLoginStatus() == true) {
 				System.out.println("	6. logout");
