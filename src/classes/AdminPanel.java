@@ -1,7 +1,5 @@
 package classes;
 
-import java.util.Date;
-
 import abstracts.Flight;
 import abstracts.User;
 import interfaces.AirlineOperation;
@@ -163,9 +161,9 @@ public class AdminPanel implements CustomerOperation, AirlineOperation, FlightOp
 			}
 		}
 		if (airline != null) {
-			System.out.println("Flight Found");
+			System.out.println("Airline Found");
 		} else {
-			System.out.println("Flight Not Found");
+			System.out.println("Airline Not Found");
 		}
 		return airline;
 	}
@@ -175,8 +173,8 @@ public class AdminPanel implements CustomerOperation, AirlineOperation, FlightOp
 		for (Airline c : airlines) {
 			if (c != null) {
 				System.out.println("**********************************");
-				System.out.println("Customer Name: " + c.getName());
-				System.out.println("Customer NID: " + c.getId());
+				System.out.println("Airline Name: " + c.getName());
+				System.out.println("Airline NID: " + c.getId());
 				System.out.println("----------------------------------");
 				System.out.println("----------------------------------");
 			}
@@ -249,11 +247,11 @@ public class AdminPanel implements CustomerOperation, AirlineOperation, FlightOp
 				}
 			}
 		}
-		if (c != null) {
-			System.out.println("Customer Found");
-		} else {
+		if (c == null) {
 			System.out.println("Customer Not Found");
-		}
+		}//  else {
+		// 	System.out.println("Customer Not Found");
+		// }
 		return c;
 	}
 
@@ -263,13 +261,24 @@ public class AdminPanel implements CustomerOperation, AirlineOperation, FlightOp
 		
 		for (int i = 0; i < customers.length; i++) {
 			if (customers[i] != null) {
-				if (customers[i].getEmail() == email && customers[i].getPassword() == password) {
+				System.out.println(customers[i].getEmail().equals(email));
+				System.out.println(customers[i].getPassword() == password);
+				
+				
+				if (customers[i].getEmail().equals(email) && customers[i].getPassword().equals(password)) {
 					c = customers[i];
 					break;
 				}
 			}
 		}
 		if (c != null) {
+			LoginSession.setLoginStatus(true);
+			if(c.getRole().equals("admin")) {
+				LoginSession.setRole(1);
+			}else if(c.getRole().equals("user")) {
+				LoginSession.setRole(2);
+			}
+			
 			System.out.println("Login successful");
 		} else {
 			System.out.println("login email or password are wrong");

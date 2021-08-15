@@ -12,6 +12,7 @@ import classes.Airline;
 import classes.BookedTicket;
 import classes.Customer;
 import classes.InternationalFlight;
+import classes.LoginSession;
 import classes.NationalFlight;
 
 public class Start {
@@ -29,11 +30,20 @@ public class Start {
 		while (choice) {
 			System.out.println("Here are Some Options for You: \n");
 			System.out.println("	1. Show flights");
-			System.out.println("	2. Login/ Sign Up");
-			System.out.println("	3. Admin controll");
+			if (LoginSession.isLoginStatus() != true) {
+				System.out.println("	2. Login/ Sign Up");
+			}
+
+			if (LoginSession.isLoginStatus() == true && LoginSession.getRole() ==1) {
+				System.out.println("	3. Admin control");
+			}
+
 			System.out.println("	4. Booking ticket");
 			System.out.println("	5. About us");
-			System.out.println("	6. Exit the Application\n");
+			if (LoginSession.isLoginStatus() == true) {
+				System.out.println("	6. logout");
+			}
+			System.out.println("	7. Exit the Application\\n");
 			System.out.print("What do you want to do? : ");
 
 			int first = sc.nextInt();
@@ -386,7 +396,6 @@ public class Start {
 					switch (second6) {
 					case 1:
 
-						
 						System.out.print("Enter Airline id: ");
 						int id = sc.nextInt();
 
@@ -401,10 +410,10 @@ public class Start {
 							airline.setId(id);
 							airline.setName(name);
 							airline.setNumberOfSeat(noOFseat);
-							
+
 							adminpanel.insertAirline(airline);
 						}
-					
+
 						break;
 
 					case 2:
@@ -450,68 +459,71 @@ public class Start {
 				System.out.println("	3. Go Back\n");
 				System.out.print("What do you want to do? : ");
 				int second9 = sc.nextInt();
-					switch (second9) {
-					case 1:
+				switch (second9) {
+				case 1:
 
-							System.out.print("Enter Booking ticket id: ");
-							int id = sc.nextInt();
+					System.out.print("Enter Booking ticket id: ");
+					int id = sc.nextInt();
 
-							System.out.print("Enter Bookig customer id name: ");
-							int cusID = sc.nextInt();
+					System.out.print("Enter Bookig customer id name: ");
+					int cusID = sc.nextInt();
 
-							
-							System.out.print("Enter Bookig Flight id name: ");
-							int flithID = sc.nextInt();
+					System.out.print("Enter Bookig Flight id name: ");
+					int flithID = sc.nextInt();
 
-							System.out.print("Enter Booking ticket Price: ");
-							int price = sc.nextInt();
-							
-							System.out.print("Enter Booking ticket Date: ");
-							String date = sc.next();
-							adminpanel.getFlight(flithID);
-							if (adminpanel.searchBookTicketBYId(id) == null && adminpanel.getCustomer(cusID) != null &&  adminpanel.getFlight(flithID) != null) {
-								
-								BookedTicket booktk = new BookedTicket();
-								booktk.setId(id);
-								booktk.setCustomer(adminpanel.getCustomer(cusID));
-								booktk.setFlight(adminpanel.getFlight(flithID));
-								booktk.setTicketPrice(price);
-								booktk.setBookedDate(sdformat.parse("21/08/2021"));
-							}
-						
-						
-	
-							break;
-	
-						case 2:
-							System.out.print("Enter Booking ticket id: ");
-							int id8 = sc.nextInt();
-							
-							adminpanel.removeBookingTicket(adminpanel.searchBookTicketBYId(id8));
-	
-							break;
-	
-						case 3:
-	
-							System.out.println("You have Selected to Go Back");
-							break;
-	
-						default:
-	
-							System.out.println("Invalid Input");
-							break;
-						}
+					System.out.print("Enter Booking ticket Price: ");
+					int price = sc.nextInt();
+
+					System.out.print("Enter Booking ticket Date: ");
+					String date = sc.next();
+					adminpanel.getFlight(flithID);
+					if (adminpanel.searchBookTicketBYId(id) == null && adminpanel.getCustomer(cusID) != null
+							&& adminpanel.getFlight(flithID) != null) {
+
+						BookedTicket booktk = new BookedTicket();
+						booktk.setId(id);
+						booktk.setCustomer(adminpanel.getCustomer(cusID));
+						booktk.setFlight(adminpanel.getFlight(flithID));
+						booktk.setTicketPrice(price);
+						booktk.setBookedDate(sdformat.parse("21/08/2021"));
+					}
+
+					break;
+
+				case 2:
+					System.out.print("Enter Booking ticket id: ");
+					int id8 = sc.nextInt();
+
+					adminpanel.removeBookingTicket(adminpanel.searchBookTicketBYId(id8));
+
+					break;
+
+				case 3:
+
+					System.out.println("You have Selected to Go Back");
+					break;
+
+				default:
+
+					System.out.println("Invalid Input");
+					break;
+				}
 				break;
 
 			case 5:
 
 				System.out.println("you have selected about us");
-				
+
 				new AboutUs();
 				break;
-				
-				
+
 			case 6:
+				if (LoginSession.isLoginStatus() == true) {
+					LoginSession.setLoginStatus(false);
+				}
+				break;
+
+			case 7:
 
 				System.out.println("You have selected to exit the application");
 				System.out.println("Thank you for using Application");

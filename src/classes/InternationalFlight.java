@@ -13,7 +13,7 @@ public class InternationalFlight extends Flight {
 
 	public InternationalFlight(int no, String from, String to, String time, Date depatureDate, int sit) {
 		super(no, from, to, time, depatureDate, sit);
-		// TODO Auto-generated constructor stub
+		
 	}
 
 }

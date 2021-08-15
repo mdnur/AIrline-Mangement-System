@@ -14,5 +14,7 @@ public class Customer extends User {
 
 	public Customer() {
 	}
-
+	public String getRole() {
+		return role;
+	}
 }

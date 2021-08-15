@@ -90,5 +90,7 @@ public abstract class User {
 	public void setAddress(String address) {
 		this.address = address;
 	}
+	public abstract String getRole();
+	
 
 }

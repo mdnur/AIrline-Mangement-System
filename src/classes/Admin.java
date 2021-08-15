@@ -11,5 +11,7 @@ public class Admin extends User {
 			String address) {
 		super(id, name, email, password, mobile, gender, dob, address);
 	}
-
+	public String getRole() {
+		return role;
+	}
 }
