@@ -92,6 +92,11 @@ public class AdminPanel implements CustomerOperation, AirlineOperation, FlightOp
 	
 	public void searchFlightsByRange(String range ) {
 		
+		if(countFligntByRange(range) == 0) {
+			Tools.clearPrintHold("No Flights found\n");
+			return;
+		}
+		
 		for (int i = 0; i < flights.length; i++) {
 			if (flights[i] != null) {
 				if (flights[i].getFlightRange() == range) {
@@ -354,6 +359,15 @@ public class AdminPanel implements CustomerOperation, AirlineOperation, FlightOp
 	}
 
 	
+	public int countFligntByRange(String range) {
+		int count = 0;
+		for(int i = 0; i < flights.length; i++) {
+			if(flights[i] != null && flights[i].getFlightRange().equals(range)) {
+				count++;
+			}
+		}
+		return count;
+	}
 
 
 
