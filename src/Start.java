@@ -4,7 +4,6 @@ import java.text.SimpleDateFormat;
 import java.util.Scanner;
 
 import abstracts.Flight;
-import abstracts.User;
 import classes.AboutUs;
 import classes.Admin;
 import classes.AdminPanel;
@@ -115,7 +114,7 @@ public class Start {
 						System.out.print("Enter you password: ");
 						String password = sc.next();
 
-						User user1 = adminpanel.loginUser(email, password);
+						adminpanel.loginUser(email, password);
 
 						break;
 
@@ -126,7 +125,7 @@ public class Start {
 						System.out.print("Enter you password: ");
 						String password2 = sc.next();
 
-						User user2 = adminpanel.loginUser(email1, password2);
+						 adminpanel.loginUser(email1, password2);
 
 						break;
 
@@ -260,6 +259,7 @@ public class Start {
 							cus1.setMobile(mobile);
 							cus1.setGender(gender);
 							cus1.setDob(sdformat.parse(dob));
+							cus1.setAddress(address);
 						} else {
 							System.out.println("id is taken");
 						}
@@ -329,8 +329,7 @@ public class Start {
 						System.out.print("Enter Flight flightRange(1. national ,2.international): ");
 						int flightRange = sc.nextInt();
 
-						System.out.print("Enter you address: ");
-						String address = sc.next();
+
 						Flight flight5 = null;
 						if (flightRange == 1) {
 							flight5 = new InternationalFlight();
@@ -474,7 +473,7 @@ public class Start {
 					System.out.print("Enter Booking ticket Price: ");
 					int price = sc.nextInt();
 
-					System.out.print("Enter Booking ticket Date: ");
+					System.out.print("Enter Booking ticket Date(dd/mm/yyyy): ");
 					String date = sc.next();
 					adminpanel.getFlight(flithID);
 					if (adminpanel.searchBookTicketBYId(id) == null && adminpanel.getCustomer(cusID) != null
@@ -485,7 +484,7 @@ public class Start {
 						booktk.setCustomer(adminpanel.getCustomer(cusID));
 						booktk.setFlight(adminpanel.getFlight(flithID));
 						booktk.setTicketPrice(price);
-						booktk.setBookedDate(sdformat.parse("21/08/2021"));
+						booktk.setBookedDate(sdformat.parse(date));
 					}
 
 					break;

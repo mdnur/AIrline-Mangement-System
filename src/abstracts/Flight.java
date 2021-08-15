@@ -9,20 +9,20 @@ public abstract class Flight {
 	private String from;
 	private String to;
 	private String time;
-	private Date depatureDate;
+	private Date departureDate;
 	private Airline airline;
 	private String flightRange;
 	
 	public Flight() {
 	}
 
-	public Flight(int no, String from, String to, String time, Date depatureDate, int sit) {
+	public Flight(int no, String from, String to, String time, Date departureDate, int sit) {
 		super();
 		this.no = no;
 		this.from = from;
 		this.to = to;
 		this.time = time;
-		this.depatureDate = depatureDate;
+		this.departureDate = departureDate;
 	}
 
 	public int getNo() {
@@ -58,11 +58,11 @@ public abstract class Flight {
 	}
 
 	public Date getDepatureDate() {
-		return depatureDate;
+		return departureDate;
 	}
 
 	public void setDepatureDate(Date depatureDate) {
-		this.depatureDate = depatureDate;
+		this.departureDate = depatureDate;
 	}
 
 	public Airline getAirline() {

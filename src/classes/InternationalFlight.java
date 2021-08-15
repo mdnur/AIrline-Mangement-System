@@ -11,9 +11,13 @@ public class InternationalFlight extends Flight {
 		super();
 	}
 
-	public InternationalFlight(int no, String from, String to, String time, Date depatureDate, int sit) {
-		super(no, from, to, time, depatureDate, sit);
+	public InternationalFlight(int no, String from, String to, String time, Date departureDate, int sit) {
+		super(no, from, to, time, departureDate, sit);
 		
+	}
+
+	public String getFlightRange(){
+		return this.flightRange;
 	}
 
 }
