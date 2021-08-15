@@ -261,10 +261,6 @@ public class AdminPanel implements CustomerOperation, AirlineOperation, FlightOp
 		
 		for (int i = 0; i < customers.length; i++) {
 			if (customers[i] != null) {
-				System.out.println(customers[i].getEmail().equals(email));
-				System.out.println(customers[i].getPassword() == password);
-				
-				
 				if (customers[i].getEmail().equals(email) && customers[i].getPassword().equals(password)) {
 					c = customers[i];
 					break;
