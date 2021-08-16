@@ -15,7 +15,7 @@ import classes.LoginSession;
 import classes.NationalFlight;
 
 public class Start {
-	private static SimpleDateFormat sdformat = new SimpleDateFormat("dd/MM/yyyy");
+	public static SimpleDateFormat sdformat = new SimpleDateFormat("dd/MM/yyyy");
 
 	public static void main(String[] args) throws ParseException {
 		System.out.println("Welcome to Sample Bank Application");
@@ -208,8 +208,8 @@ public class Start {
 				System.out.println("Admin Controll");
 				System.out.println("	1. customer mangement ");
 				System.out.println("	2. Flight mangement");
-				System.out.println("	2. Airline mangement");
-				System.out.println("	3. Go Back\n");
+				System.out.println("	3. Airline mangement");
+				System.out.println("	4. Go Back\n");
 				System.out.print("What do you want to do? : ");
 				int third1 = sc.nextInt();
 
@@ -449,7 +449,9 @@ public class Start {
 					}
 
 					break;
-
+				case 4:
+					System.out.println("Going Back . . .");
+					break;
 				default:
 
 					System.out.println("Invalid Input");

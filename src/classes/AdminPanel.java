@@ -2,6 +2,7 @@ package classes;
 
 import java.util.Date;
 
+import java.text.SimpleDateFormat;
 import abstracts.Flight;
 import abstracts.User;
 import interfaces.AirlineOperation;
@@ -10,6 +11,7 @@ import interfaces.CustomerOperation;
 import interfaces.FlightOperation;
 
 public class AdminPanel implements CustomerOperation, AirlineOperation, FlightOperation,BookTicketOperation {
+	public static SimpleDateFormat sdformat = new SimpleDateFormat("dd/MM/yyyy");
 	User customers[] = new User[100];
 	Airline airlines[] = new Airline[100];
 	Flight flights[] = new Flight[100];
@@ -80,7 +82,7 @@ public class AdminPanel implements CustomerOperation, AirlineOperation, FlightOp
 				System.out.println("Flight From: " + c.getFrom());
 				System.out.println("Flight To: " + c.getTo());
 				System.out.println("Flight time: " + c.getTime());
-				System.out.println("Flight Depature Date: " + c.getDepatureDate());
+				System.out.println("Flight Depature Date: " + sdformat.format(c.getDepatureDate()));
 				System.out.println("Flight Flight Range: " + c.getFlightRange());
 				System.out.println("Flight Flight Airline Name: " + c.getAirline().getName());
 				System.out.println("Flight Fligth Airline seated booked: " + c.getAirline().getNumberOfSeatbooked());
@@ -107,7 +109,7 @@ public class AdminPanel implements CustomerOperation, AirlineOperation, FlightOp
 					System.out.println("Flight From: " + flights[i].getFrom());
 					System.out.println("Flight To: " + flights[i].getTo());
 					System.out.println("Flight time: " + flights[i].getTime());
-					System.out.println("Flight Depature Date: " + flights[i].getDepatureDate());
+					System.out.println("Flight Depature Date: " + sdformat.format(flights[i].getDepatureDate()));
 					System.out.println("Flight Flight Range: " + flights[i].getFlightRange());
 					System.out.println("Flight Flight Airline Name: " + flights[i].getAirline().getName());
 					System.out.println("Flight Fligth Airline seated booked: " + flights[i].getAirline().getNumberOfSeatbooked());
@@ -378,7 +380,7 @@ public class AdminPanel implements CustomerOperation, AirlineOperation, FlightOp
 				System.out.println("Customer : " + bookedTickets[i].getCustomer());
 				System.out.println("Ticket Price : " + bookedTickets[i].getTicketPrice());
 				System.out.println("Payment Status : " + bookedTickets[i].getPaymentStatus());
-				System.out.println("Flight Flight Range : " + bookedTickets[i].getBookedDate());
+				System.out.println("Flight Flight Range : " + sdformat.format(bookedTickets[i].getBookedDate()));
 				System.out.println("----------------------------------");
 				System.out.println("----------------------------------");
 			}
@@ -394,7 +396,7 @@ public class AdminPanel implements CustomerOperation, AirlineOperation, FlightOp
 					System.out.println("Customer : " + bookedTickets[i].getCustomer());
 					System.out.println("Ticket Price : " + bookedTickets[i].getTicketPrice());
 					System.out.println("Payment Status : " + bookedTickets[i].getPaymentStatus());
-					System.out.println("Flight Flight Range : " + bookedTickets[i].getBookedDate());
+					System.out.println("Flight Flight Range : " + sdformat.format(bookedTickets[i].getBookedDate()));
 					System.out.println("----------------------------------");
 					System.out.println("----------------------------------");
 				}
