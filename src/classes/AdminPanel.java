@@ -82,10 +82,10 @@ public class AdminPanel implements CustomerOperation, AirlineOperation, FlightOp
 				System.out.println("Flight From: " + c.getFrom());
 				System.out.println("Flight To: " + c.getTo());
 				System.out.println("Flight time: " + c.getTime());
-				System.out.println("Flight Depature Date: " + sdformat.format(c.getDepatureDate()));
+				System.out.println("Flight Departure Date: " + sdformat.format(c.getDepatureDate()));
 				System.out.println("Flight Flight Range: " + c.getFlightRange());
 				System.out.println("Flight Flight Airline Name: " + c.getAirline().getName());
-				System.out.println("Flight Fligth Airline seated booked: " + c.getAirline().getNumberOfSeatbooked());
+				System.out.println("Flight Flight Airline seated booked: " + c.getAirline().getNumberOfSeatbooked());
 				System.out.println("----------------------------------");
 				System.out.println("----------------------------------");
 			}

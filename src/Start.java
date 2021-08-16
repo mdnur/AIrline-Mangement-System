@@ -327,8 +327,9 @@ public class Start {
 					System.out.println("Here are Some Options for You: \n");
 					System.out.println("	1. Create New Flight");
 					System.out.println("	2. Remove Existing Flight");
-					System.out.println("	3. See all Flight");
-					System.out.println("	4. Go Back\n");
+					System.out.println("	3. Search Flight");
+					System.out.println("	4. See all Flight");
+					System.out.println("	5. Go Back\n");
 					System.out.print("What do you want to do? : ");
 					int second4 = sc.nextInt();
 
@@ -349,7 +350,7 @@ public class Start {
 						System.out.print("Enter Flight time: ");
 						String time = sc.nextLine();
 
-						System.out.print("Enter Flight depatureDate(dd/mm/yyyy): ");
+						System.out.print("Enter Flight departure Date(dd/mm/yyyy): ");
 						String depatureDate = sc.nextLine();
 
 						System.out.print("Enter Flight airline id: ");
@@ -394,10 +395,28 @@ public class Start {
 						break;
 
 					case 3:
+						System.out.print("Enter Flight id: ");
+						int Flight1IDs = sc.nextInt();
+						Flight singleFlightD = adminpanel.getFlight(Flight1IDs);
+
+						if(singleFlightD != null){
+							System.out.println("Flight No: " + singleFlightD.getNo());
+							System.out.println("Flight From: " + singleFlightD.getFrom());
+							System.out.println("Flight To: " + singleFlightD.getTo());
+							System.out.println("Flight time: " + singleFlightD.getTime());
+							System.out.println("Flight Departure Date: " + sdformat.format(singleFlightD.getDepatureDate()));
+							System.out.println("Flight Flight Range: " + singleFlightD.getFlightRange());
+							System.out.println("Flight Flight Airline Name: " + singleFlightD.getAirline().getName());
+							System.out.println("Flight Flight Airline seated booked: " + singleFlightD.getAirline().getNumberOfSeatbooked());
+						}else{
+
+						}
+						break;
+					case 4:
 						adminpanel.showAllFlights();
 						break;
 
-					case 4:
+					case 5:
 
 						System.out.println("Going Back . . .");
 						break;
@@ -417,8 +436,9 @@ public class Start {
 					System.out.println("Here are Some Options for You: \n");
 					System.out.println("	1. Create New Airline");
 					System.out.println("	2. Remove Existing Airline");
-					System.out.println("	3. See all Airline");
-					System.out.println("	4. Go Back\n");
+					System.out.println("	3. Search Airline");
+					System.out.println("	4. See all Airline");
+					System.out.println("	5. Go Back\n");
 					System.out.print("What do you want to do? : ");
 					int second6 = sc.nextInt();
 
@@ -457,10 +477,25 @@ public class Start {
 						break;
 
 					case 3:
+						System.out.print("Enter Airline id: ");
+						int i3s = sc.nextInt();
+
+						Airline airDs = adminpanel.getAirline(i3s);
+
+						if(airDs != null){
+							System.out.println("**********************************");
+							System.out.println("Airline Name: " + airDs.getName());
+							System.out.println("Airline NID: " + airDs.getId());
+							System.out.println("----------------------------------");
+							System.out.println("----------------------------------");
+						}
+
+						break;
+					case 4:
 						adminpanel.showAllAirlines();
 						break;
 
-					case 4:
+					case 5:
 
 						System.out.println("Going Back . . .");
 						break;
@@ -497,10 +532,10 @@ public class Start {
 					System.out.print("Enter Booking ticket id: ");
 					int id = sc.nextInt();
 
-					System.out.print("Enter Bookig customer id name: ");
+					System.out.print("Enter Booking customer id name: ");
 					int cusID = sc.nextInt();
 
-					System.out.print("Enter Bookig Flight id name: ");
+					System.out.print("Enter Booking Flight id name: ");
 					int flithID = sc.nextInt();
 
 					System.out.print("Enter Booking ticket Price: ");
