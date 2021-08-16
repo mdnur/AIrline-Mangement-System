@@ -91,7 +91,10 @@ public class Start {
 				break;
 
 			case 2:
-
+				if (LoginSession.isLoginStatus() == true){
+					System.out.println("You have already login ,Access deny");
+					break;
+				}
 				System.out.println("You have selected login/Sign Up");
 
 				System.out.println("Here are Some Options for You: \n");
@@ -206,6 +209,10 @@ public class Start {
 				break;
 
 			case 3:
+				if(LoginSession.isLoginStatus() == false){
+					System.out.println("Access deny");
+					break;
+				}
 				System.out.println("Admin Controll");
 				System.out.println("	1. customer mangement ");
 				System.out.println("	2. Flight mangement");
@@ -518,6 +525,10 @@ public class Start {
 				break;
 
 			case 4:
+				if(LoginSession.isLoginStatus() == false){
+					System.out.println("Access deny");
+					break;
+				}
 				System.out.println("You have selected  Booking Ticket");
 				System.out.println("Here are Some Options for You: \n");
 				System.out.println("	1. Booking Ticket");
