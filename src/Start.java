@@ -36,8 +36,12 @@ public class Start {
 			if (LoginSession.isLoginStatus() == true && LoginSession.getRole() ==1) {
 				System.out.println("	3. Admin control");
 			}
-
-			System.out.println("	4. Booking ticket");
+			if(LoginSession.isLoginStatus() == true) {
+				System.out.println("	4. Booking ticket");
+			}else {
+				System.out.print(" ");
+			}
+			
 			System.out.println("	5. About us");
 			if (LoginSession.isLoginStatus() == true) {
 				System.out.println("	6. logout");
@@ -310,18 +314,20 @@ public class Start {
 
 						System.out.print("Enter Flight No: ");
 						int no = sc.nextInt();
+						sc.nextLine();
+						
 
 						System.out.print("Enter Flight From: ");
-						String from = sc.next();
+						String from = sc.nextLine();
 
 						System.out.print("Enter Flight to: ");
-						String to = sc.next();
+						String to = sc.nextLine();
 
 						System.out.print("Enter Flight time: ");
-						String time = sc.next();
+						String time = sc.nextLine();
 
 						System.out.print("Enter Flight depatureDate(dd/mm/yyyy): ");
-						String depatureDate = sc.next();
+						String depatureDate = sc.nextLine();
 
 						System.out.print("Enter Flight airline id: ");
 						int airline = sc.nextInt();
@@ -331,9 +337,9 @@ public class Start {
 
 
 						Flight flight5 = null;
-						if (flightRange == 1) {
+						if (flightRange == 2) {
 							flight5 = new InternationalFlight();
-						} else if (flightRange == 2) {
+						} else if (flightRange == 1) {
 							flight5 = new NationalFlight();
 						}
 						Airline air = adminpanel.getAirline(airline);
@@ -346,8 +352,9 @@ public class Start {
 							flight5.setDepatureDate(sdformat.parse(depatureDate));
 							flight5.setAirline(air);
 							flight5.setTime(time);
+							adminpanel.insertFlight(flight5);
 						} else {
-							System.out.println("change you flight , you no is taken");
+							System.out.println("change you flight , your no is taken");
 						}
 
 						break;
@@ -454,8 +461,9 @@ public class Start {
 				System.out.println("You have selected  Booking Ticket");
 				System.out.println("Here are Some Options for You: \n");
 				System.out.println("	1. Booking Ticket");
-				System.out.println("	2. Remove TIcket");
-				System.out.println("	3. Go Back\n");
+				System.out.println("	2. Remove Ticket");
+				System.out.println("	3. Show All Ticket");
+				System.out.println("	4. Go Back\n");
 				System.out.print("What do you want to do? : ");
 				int second9 = sc.nextInt();
 				switch (second9) {
@@ -497,9 +505,14 @@ public class Start {
 
 					break;
 
-				case 3:
+				case 4:
 
 					System.out.println("You have Selected to Go Back");
+					break;
+					
+				case 3 :
+					
+					adminpanel.showAllBookingTicket();
 					break;
 
 				default:

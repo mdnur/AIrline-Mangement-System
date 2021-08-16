@@ -1,5 +1,7 @@
 package classes;
 
+import java.util.Date;
+
 import abstracts.Flight;
 import abstracts.User;
 import interfaces.AirlineOperation;
@@ -92,14 +94,14 @@ public class AdminPanel implements CustomerOperation, AirlineOperation, FlightOp
 	
 	public void searchFlightsByRange(String range ) {
 		
-		if(countFligntByRange(range) == 0) {
-			Tools.clearPrintHold("No Flights found\n");
-			return;
-		}
+//		if(countFlightByRange(range) == 0) {
+//			Tools.clearPrintHold("No Flights found\n");
+//			return;
+//		}
 		
 		for (int i = 0; i < flights.length; i++) {
 			if (flights[i] != null) {
-				if (flights[i].getFlightRange() == range) {
+				if (flights[i].getFlightRange().equals(range)) {
 					System.out.println("**********************************");
 					System.out.println("Flight No: " + flights[i].getNo());
 					System.out.println("Flight From: " + flights[i].getFrom());
@@ -266,10 +268,6 @@ public class AdminPanel implements CustomerOperation, AirlineOperation, FlightOp
 		
 		for (int i = 0; i < customers.length; i++) {
 			if (customers[i] != null) {
-				System.out.println(customers[i].getEmail().equals(email));
-				System.out.println(customers[i].getPassword() == password);
-				
-				
 				if (customers[i].getEmail().equals(email) && customers[i].getPassword().equals(password)) {
 					c = customers[i];
 					break;
@@ -278,6 +276,7 @@ public class AdminPanel implements CustomerOperation, AirlineOperation, FlightOp
 		}
 		if (c != null) {
 			LoginSession.setLoginStatus(true);
+			LoginSession.setUserID(c.getId());
 			if(c.getRole().equals("admin")) {
 				LoginSession.setRole(1);
 			}else if(c.getRole().equals("user")) {
@@ -359,7 +358,7 @@ public class AdminPanel implements CustomerOperation, AirlineOperation, FlightOp
 	}
 
 	
-	public int countFligntByRange(String range) {
+	public int countFlightByRange(String range) {
 		int count = 0;
 		for(int i = 0; i < flights.length; i++) {
 			if(flights[i] != null && flights[i].getFlightRange().equals(range)) {
@@ -367,6 +366,40 @@ public class AdminPanel implements CustomerOperation, AirlineOperation, FlightOp
 			}
 		}
 		return count;
+	}
+
+	@Override
+	public void showAllBookingTicket() {
+		for(int i = 0; i < bookedTickets.length; i++) {
+			if (bookedTickets[i] != null) {
+				
+				System.out.println("**********************************");
+				System.out.println("Ticket ID : " + bookedTickets[i].getId());
+				System.out.println("Customer : " + bookedTickets[i].getCustomer());
+				System.out.println("Ticket Price : " + bookedTickets[i].getTicketPrice());
+				System.out.println("Payment Status : " + bookedTickets[i].getPaymentStatus());
+				System.out.println("Flight Flight Range : " + bookedTickets[i].getBookedDate());
+				System.out.println("----------------------------------");
+				System.out.println("----------------------------------");
+			}
+		}
+	}
+	
+	public void getBookingTicketByUserId() {
+		for(int i = 0; i < bookedTickets.length; i++) {
+			if(bookedTickets[i]!= null ) {
+				if(bookedTickets[i].getCustomer().getId() == LoginSession.getUserID()) {
+					System.out.println("**********************************");
+					System.out.println("Ticket ID : " + bookedTickets[i].getId());
+					System.out.println("Customer : " + bookedTickets[i].getCustomer());
+					System.out.println("Ticket Price : " + bookedTickets[i].getTicketPrice());
+					System.out.println("Payment Status : " + bookedTickets[i].getPaymentStatus());
+					System.out.println("Flight Flight Range : " + bookedTickets[i].getBookedDate());
+					System.out.println("----------------------------------");
+					System.out.println("----------------------------------");
+				}
+			}
+		}
 	}
 
 

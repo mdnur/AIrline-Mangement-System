@@ -65,5 +65,9 @@ public class BookedTicket {
 	public void setPaymentStatus(boolean paymentStatus) {
 		this.paymentStatus = paymentStatus;
 	}
+	
+	public boolean getPaymentStatus() {
+		return paymentStatus;
+	}
 
 }

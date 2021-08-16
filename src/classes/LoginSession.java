@@ -3,6 +3,7 @@ package classes;
 public class LoginSession {
 	private static boolean loginStatus;
 	private static int role;
+	private static int userID;
 
 	public static boolean isLoginStatus() {
 		return loginStatus;
@@ -19,5 +20,16 @@ public class LoginSession {
 	public static void setRole(int role) {
 		LoginSession.role = role;
 	}
+
+	public static int getUserID() {
+		return userID;
+	}
+
+	public static void setUserID(int userID) {
+		LoginSession.userID = userID;
+	}
+	
+	
+			
 	
 }

@@ -13,7 +13,7 @@ public class AboutUs {
 		String text="", temp;	
 		try
 		{
-			FileReader reader = new FileReader("src/classes/aboutUs.txt");
+			FileReader reader = new FileReader("classes/aboutUs.txt");
 			BufferedReader bfr = new BufferedReader(reader);			
 			
 			while((temp = bfr.readLine())!=null)		
