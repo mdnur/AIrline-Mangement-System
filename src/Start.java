@@ -522,8 +522,9 @@ public class Start {
 				System.out.println("Here are Some Options for You: \n");
 				System.out.println("	1. Booking Ticket");
 				System.out.println("	2. Remove Ticket");
-				System.out.println("	3. Show All Ticket");
-				System.out.println("	4. Go Back\n");
+				System.out.println("	3. Search Ticket");
+				System.out.println("	4. Show All Ticket");
+				System.out.println("	5. Go Back\n");
 				System.out.print("What do you want to do? : ");
 				int second9 = sc.nextInt();
 				switch (second9) {
@@ -565,16 +566,35 @@ public class Start {
 
 					break;
 
-				case 4:
-
-					System.out.println("You have Selected to Go Back");
-					break;
+				
 					
 				case 3 :
+					System.out.print("Enter Booking ticket id: ");
+					int id8s = sc.nextInt();
+
+					BookedTicket bookingTicketData = adminpanel.searchBookTicketBYId(id8s);
+					if (bookingTicketData !=null){
+						System.out.println("**********************************");
+						System.out.println("Ticket ID : " + bookingTicketData.getId());
+						System.out.println("Customer : " + bookingTicketData.getCustomer());
+						System.out.println("Ticket Price : " + bookingTicketData.getTicketPrice());
+						System.out.println("Payment Status : " + bookingTicketData.getPaymentStatus());
+						System.out.println("Flight Flight Range : " + sdformat.format(bookingTicketData.getBookedDate()));
+						System.out.println("----------------------------------");
+						System.out.println("----------------------------------");
+					}else{
+
+					}
+					
+					break;
+				case 4 :
 					
 					adminpanel.showAllBookingTicket();
 					break;
+				case 5:
 
+					System.out.println("You have Selected to Go Back");
+					break;
 				default:
 
 					System.out.println("Invalid Input");
