@@ -234,7 +234,7 @@ public class AdminPanel implements CustomerOperation, AirlineOperation, FlightOp
 				System.out.println("Customer Email: " + c.getEmail());
 				System.out.println("Customer Mobile: " + c.getMobile());
 				System.out.println("Customer Gender: " + c.getGender());
-				System.out.println("Customer Dob: " + c.getDob());
+				System.out.println("Customer Dob: " + sdformat.format(c.getDob()));
 				System.out.println("Customer Address: " + c.getAddress());
 				System.out.println("----------------------------------");
 				System.out.println("----------------------------------");
@@ -259,7 +259,7 @@ public class AdminPanel implements CustomerOperation, AirlineOperation, FlightOp
 		if (c == null) {
 			System.out.println("Customer Not Found");
 		}//  else {
-		// 	System.out.println("Customer Not Found");
+		// 	System.out.println("Customer  Found");
 		// }
 		return c;
 	}

@@ -4,6 +4,7 @@ import java.text.SimpleDateFormat;
 import java.util.Scanner;
 
 import abstracts.Flight;
+import abstracts.User;
 import classes.AboutUs;
 import classes.Admin;
 import classes.AdminPanel;
@@ -221,8 +222,9 @@ public class Start {
 					System.out.println("Here are Some Options for You: \n");
 					System.out.println("	1. Create New Customer");
 					System.out.println("	2. Remove Existing Customer");
-					System.out.println("	3. See all Customer");
-					System.out.println("	4. Go Back\n");
+					System.out.println("	3. Search Customer by id");
+					System.out.println("	4. See all Customer");
+					System.out.println("	5. Go Back\n");
 					System.out.print("What do you want to do? : ");
 					int second3 = sc.nextInt();
 
@@ -280,12 +282,33 @@ public class Start {
 						adminpanel.removeCustomer(adminpanel.getCustomer(nid2));
 
 						break;
-
 					case 3:
+						System.out.print("Enter Customer id for searching customer: ");
+						int nid3 = sc.nextInt();
+						User searchCus = adminpanel.getCustomer(nid3);
+
+						if(searchCus !=null){
+							System.out.println("**********************************");
+							System.out.println("Customer ID: " + searchCus.getId());
+							System.out.println("Customer Name: " + searchCus.getName());
+							System.out.println("Customer Email: " + searchCus.getEmail());
+							System.out.println("Customer Mobile: " + searchCus.getMobile());
+							System.out.println("Customer Gender: " + searchCus.getGender());
+							System.out.println("Customer Dob: " + sdformat.format(searchCus.getDob()));
+							System.out.println("Customer Address: " + searchCus.getAddress());
+							System.out.println("----------------------------------");
+							System.out.println("----------------------------------");
+						}else{
+
+						}
 						adminpanel.showAllCustomers();
 						break;
 
 					case 4:
+						adminpanel.showAllCustomers();
+						break;
+
+					case 5:
 
 						System.out.println("Going Back . . .");
 						break;
