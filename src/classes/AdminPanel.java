@@ -1,6 +1,5 @@
 package classes;
 
-import java.util.Date;
 
 import java.text.SimpleDateFormat;
 import abstracts.Flight;
@@ -12,7 +11,7 @@ import interfaces.FlightOperation;
 
 public class AdminPanel implements CustomerOperation, AirlineOperation, FlightOperation,BookTicketOperation {
 	public static SimpleDateFormat sdformat = new SimpleDateFormat("dd/MM/yyyy");
-	User customers[] = new User[100];
+	User customers[] = new User[100];// one to many all
 	Airline airlines[] = new Airline[100];
 	Flight flights[] = new Flight[100];
 	BookedTicket[] bookedTickets = new BookedTicket[100];
@@ -96,10 +95,7 @@ public class AdminPanel implements CustomerOperation, AirlineOperation, FlightOp
 	
 	public void searchFlightsByRange(String range ) {
 		
-//		if(countFlightByRange(range) == 0) {
-//			Tools.clearPrintHold("No Flights found\n");
-//			return;
-//		}
+
 		
 		for (int i = 0; i < flights.length; i++) {
 			if (flights[i] != null) {

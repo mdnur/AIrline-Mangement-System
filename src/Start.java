@@ -24,7 +24,8 @@ public class Start {
 		Scanner sc = new Scanner(System.in);
 		AdminPanel adminpanel = new AdminPanel();
 		Admin admin = new Admin(1, "admin", "admin@admin.com", "password", "085655877", "male",
-				sdformat.parse("21/03/2002"), "dhaka");
+				sdformat.parse("21/03/2002"), "dhaka");// default admin created;
+
 		adminpanel.insertAdminData(admin);
 
 		while (choice) {

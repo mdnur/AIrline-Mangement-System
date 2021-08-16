@@ -17,7 +17,6 @@ public abstract class Flight {
 	}
 
 	public Flight(int no, String from, String to, String time, Date departureDate, int sit) {
-		super();
 		this.no = no;
 		this.from = from;
 		this.to = to;

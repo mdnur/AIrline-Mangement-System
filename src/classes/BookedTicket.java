@@ -7,8 +7,8 @@ import abstracts.User;
 
 public class BookedTicket {
 	private int id;
-	private Customer customer;
-	private Flight flight;
+	private Customer customer;// one-to-one SS
+	private Flight flight; // one-one SS
 	private double ticketPrice;
 	private Date bookedDate;
 	private boolean paymentStatus;
